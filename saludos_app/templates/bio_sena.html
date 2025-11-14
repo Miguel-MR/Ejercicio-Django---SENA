@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ titulo }}</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      /* Header */
+      header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      .logo-container {
+        margin-bottom: 20px;
+      }
+
+      .logo {
+        width: 120px;
+        height: 120px;
+        background: #ff6b35;
+        border-radius: 50%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 48px;
+        font-weight: bold;
+        color: white;
+        box-shadow: 0 5px 20px rgba(255, 107, 53, 0.4);
+      }
+
+      h1 {
+        color: #2c3e50;
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .subtitle {
+        color: #7f8c8d;
+        font-size: 1.1em;
+        font-weight: 300;
+      }
+
+      /* Cards Grid */
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-bottom: 30px;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      }
+
+      .card-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        margin-bottom: 20px;
+      }
+
+      .card h2 {
+        color: #2c3e50;
+        font-size: 1.5em;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .card p {
+        color: #555;
+        line-height: 1.8;
+        text-align: justify;
+      }
+
+      .highlight {
+        color: #667eea;
+        font-weight: 600;
+      }
+
+      /* Historia Section */
+      .historia-section {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+      }
+
+      .historia-section h2 {
+        color: #2c3e50;
+        font-size: 2em;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 20px;
+      }
+
+      .timeline-item {
+        padding: 20px;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        border-radius: 15px;
+        border-left: 5px solid #667eea;
+        transition: transform 0.3s ease;
+      }
+
+      .timeline-item:hover {
+        transform: translateX(10px);
+      }
+
+      .timeline-item h3 {
+        color: #667eea;
+        margin-bottom: 10px;
+      }
+
+      /* Valores Section */
+      .valores-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      .valor-item {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 25px;
+        border-radius: 15px;
+        text-align: center;
+        transition: transform 0.3s ease;
+      }
+
+      .valor-item:hover {
+        transform: scale(1.05);
+      }
+
+      .valor-item h3 {
+        font-size: 1.3em;
+        margin-bottom: 10px;
+      }
+
+      /* Footer */
+      footer {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 30px;
+        text-align: center;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      footer p {
+        color: #7f8c8d;
+        margin-bottom: 10px;
+      }
+
+      .social-links {
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .social-link {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        transition: transform 0.3s ease;
+      }
+
+      .social-link:hover {
+        transform: scale(1.2);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 1.8em;
+        }
+
+        .cards-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .valores-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .container {
+          padding: 10px;
+        }
+
+        header,
+        .card,
+        .historia-section,
+        footer {
+          padding: 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 1.5em;
+        }
+
+        .logo {
+          width: 80px;
+          height: 80px;
+          font-size: 32px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header>
+        <div class="logo-container">
+          <div class="logo">🎓</div>
+        </div>
+        <h1>{{ titulo }}</h1>
+        <p class="subtitle">Formación Profesional Integral para Colombia</p>
+        <p class="subtitle">
+          Fundado el <span class="highlight">{{ fundacion }}</span>
+        </p>
+      </header>
+
+      <!-- Cards Grid -->
+      <div class="cards-grid">
+        <!-- Misión -->
+        <div class="card">
+          <div class="card-icon">🎯</div>
+          <h2>Misión</h2>
+          <p>{{ mision }}</p>
+        </div>
+
+        <!-- Visión -->
+        <div class="card">
+          <div class="card-icon">🔮</div>
+          <h2>Visión</h2>
+          <p>{{ vision }}</p>
+        </div>
+      </div>
+
+      <!-- Historia Section -->
+      <div class="historia-section">
+        <h2>📜 Historia del SENA</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h3>1957 - Fundación</h3>
+            <p>
+              El SENA nace el 21 de junio de 1957 mediante el Decreto-Ley 118,
+              durante el gobierno del General Gustavo Rojas Pinilla. Su creación
+              responde a la necesidad de formar técnicamente a los trabajadores
+              colombianos.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <h3>Década de 1960</h3>
+            <p>
+              Se establece como la entidad líder en formación profesional en
+              Colombia, expandiendo sus programas a nivel nacional y
+              construyendo centros de formación en todo el país.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <h3>Década de 1990</h3>
+            <p>
+              Modernización de los programas de formación, incorporando nuevas
+              tecnologías y metodologías de enseñanza. Se amplía la cobertura
+              educativa.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <h3>Siglo XXI</h3>
+            <p>
+              Transformación digital con programas virtuales y en línea. El SENA
+              se consolida como referente internacional en formación profesional
+              integral y gratuita.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <h3>Actualidad</h3>
+            <p>
+              El SENA cuenta con más de 100 centros de formación, ofreciendo
+              programas técnicos, tecnológicos y complementarios a millones de
+              colombianos cada año, completamente gratis.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Valores -->
+      <div class="historia-section">
+        <h2>💎 Valores Institucionales</h2>
+        <div class="valores-grid">
+          <div class="valor-item">
+            <h3>🤝 Respeto</h3>
+            <p>Valoramos la dignidad de cada persona</p>
+          </div>
+          <div class="valor-item">
+            <h3>📚 Libre Pensamiento</h3>
+            <p>Fomentamos la creatividad e innovación</p>
+          </div>
+          <div class="valor-item">
+            <h3>⚖️ Legalidad</h3>
+            <p>Actuamos con transparencia</p>
+          </div>
+          <div class="valor-item">
+            <h3>🌟 Transparencia</h3>
+            <p>Gestión abierta y honesta</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Datos Importantes -->
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-icon">📊</div>
+          <h2>Datos Clave</h2>
+          <ul style="list-style: none; padding: 0">
+            <li style="padding: 10px 0; border-bottom: 1px solid #eee">
+              ✅ Más de 100 centros de formación
+            </li>
+            <li style="padding: 10px 0; border-bottom: 1px solid #eee">
+              ✅ Presencia en todas las regiones
+            </li>
+            <li style="padding: 10px 0; border-bottom: 1px solid #eee">
+              ✅ Millones de egresados
+            </li>
+            <li style="padding: 10px 0">✅ Formación 100% gratuita</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🎓</div>
+          <h2>Programas</h2>
+          <ul style="list-style: none; padding: 0">
+            <li style="padding: 10px 0; border-bottom: 1px solid #eee">
+              🔸 Técnicos
+            </li>
+            <li style="padding: 10px 0; border-bottom: 1px solid #eee">
+              🔸 Tecnológicos
+            </li>
+            <li style="padding: 10px 0; border-bottom: 1px solid #eee">
+              🔸 Especializaciones Tecnológicas
+            </li>
+            <li style="padding: 10px 0">🔸 Cursos Complementarios</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🌐</div>
+          <h2>Modalidades</h2>
+          <ul style="list-style: none; padding: 0">
+            <li style="padding: 10px 0; border-bottom: 1px solid #eee">
+              💻 Virtual
+            </li>
+            <li style="padding: 10px 0; border-bottom: 1px solid #eee">
+              🏢 Presencial
+            </li>
+            <li style="padding: 10px 0; border-bottom: 1px solid #eee">
+              🔄 Mixta (Bimodal)
+            </li>
+            <li style="padding: 10px 0">📱 A distancia</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer>
+        <p><strong>SENA - Conocimiento para todos los colombianos</strong></p>
+        <p>
+          Entidad pública del orden nacional adscrita al Ministerio del Trabajo
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-link" title="Facebook">📘</a>
+          <a href="#" class="social-link" title="Twitter">🐦</a>
+          <a href="#" class="social-link" title="Instagram">📷</a>
+          <a href="#" class="social-link" title="YouTube">📺</a>
+        </div>
+        <p style="margin-top: 20px; font-size: 0.9em">
+          © 2025 SENA - Todos los derechos reservados
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
