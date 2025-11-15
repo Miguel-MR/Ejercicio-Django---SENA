@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Autor, Etiqueta, Articulo
+from .models import Autor, Etiqueta, Articulo, Notificacion
 
 class AutorSerializer(serializers.ModelSerializer):
     class Meta:
@@ -20,3 +20,8 @@ class ArticuloSerializer(serializers.ModelSerializer):
     class Meta:
         model = Articulo
         fields = ['id', 'titulo', 'contenido', 'fecha_publicacion', 'esta_publicado', 'autor', 'autor_id', 'etiquetas', 'etiqueta_ids']
+
+class NotificacionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Notificacion
+        fields = ['notificacion_id', 'nombre_notificacion', 'fecha_notificacion', 'categoria_notificacion', 'fecha_creacion', 'asunto', 'descripcion']
